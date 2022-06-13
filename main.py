@@ -8,11 +8,19 @@ from MonsterClass import Monster
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     newmonster = Monster()
-    # for attr in dir(newmonster):
-    #     if attr.startswith("__"):
-    #         continue
-    #     print("object has attribute %s" % attr)
+    newarray = []
+    for attr in dir(newmonster):
+        if attr.startswith("__"):
+            continue
+        elif attr.startswith("get"):
+            continue
+        elif attr.startswith("set"):
+            continue
+        else:
+            newarray.append(attr)
+            print("object has attribute %s" % attr)
 
-
+    for attr in newarray:
+        input(f"what do you want for the {attr}?")
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
