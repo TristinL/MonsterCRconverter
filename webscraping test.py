@@ -18,9 +18,19 @@ if __name__ == '__main__':
     string = re.sub("&raquo", "", string)
     string = re.sub("&amp", "", string)
     string = re.sub("@media.*}", "", string)
+    pattern = "<title.*?>.*-->"
+    match_results2=re.search(pattern, html, re.IGNORECASE)
+    monster=match_results2.group()
+    print(monster)
     wordarray = []
     for attr in string.split():
         wordarray.append(attr)
-    print(string)
+
+    soup = BeautifulSoup(monster, "html.parser")
+    better_soup = soup.get_text()
+    print(better_soup)
+    better_soup = re.sub("\\)*?", ") ", better_soup)
+
+    print(better_soup)
 
     #print(html)
